@@ -1,0 +1,10 @@
+# Put your Behat suites definitions here
+
+default:
+    suites:
+        greeting_customer:
+            contexts_services:
+                - setono_sylius_strands.context.ui.shop.welcome
+
+            filters:
+                tags: "@greeting_customer"
