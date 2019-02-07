@@ -1,9 +1,7 @@
-# Put your Behat suites definitions here
-
 default:
     suites:
         greeting_customer:
-            contexts_services:
+            contexts:
                 - setono_sylius_strands.context.ui.shop.welcome
 
             filters:

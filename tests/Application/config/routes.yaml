@@ -1,9 +1,0 @@
-setono_sylius_strands_shop:
-    resource: "@SetonoSyliusStrandsPlugin/Resources/config/shop_routing.yml"
-    prefix: /{_locale}
-    requirements:
-        _locale: ^[a-z]{2}(?:_[A-Z]{2})?$
-
-setono_sylius_strands_admin:
-    resource: "@SetonoSyliusStrandsPlugin/Resources/config/admin_routing.yml"
-    prefix: /admin

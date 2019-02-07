@@ -1,0 +1,15 @@
+{# @var \Sylius\Component\Core\Model\OrderInterface order #}
+
+StrandsTrack.push({
+    event: "purchased",
+    orderid: "{{ order.number }}",
+    items: [
+        {% for item in order.items %}
+            {
+                id: "{{ item|setono_sylius_strands_item_code }}",
+                price: "{{ item.discountedUnitPrice|setono_sylius_strands_format_money }}",
+                quantity: "{{ item.quantity }}"
+            }{% if not loop.last %},{% endif %}
+        {% endfor %}
+    ]
+})

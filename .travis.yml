@@ -78,6 +78,7 @@ before_script:
 
 script:
     - composer validate --strict
+    - composer check-style
     - vendor/bin/phpstan analyse -c phpstan.neon -l max src/
 
     - vendor/bin/phpunit
