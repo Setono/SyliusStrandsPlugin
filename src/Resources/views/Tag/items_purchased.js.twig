@@ -2,11 +2,11 @@
 
 StrandsTrack.push({
     event: "purchased",
-    orderid: "{{ order.number }}",
+    orderid: "{{ order.number|raw }}",
     items: [
         {% for item in order.items %}
             {
-                id: "{{ item|setono_sylius_strands_item_code }}",
+                id: "{{ item|setono_sylius_strands_item_code|raw }}",
                 price: "{{ item.discountedUnitPrice|setono_sylius_strands_format_money }}",
                 quantity: "{{ item.quantity }}"
             }{% if not loop.last %},{% endif %}

@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace Setono\SyliusStrandsPlugin\EventListener;
 
-use Setono\TagBagBundle\HttpFoundation\Session\Tag\TagBagInterface;
+use Setono\SyliusStrandsPlugin\Tag\Tags;
+use Setono\TagBagBundle\Tag\TagInterface;
+use Setono\TagBagBundle\Tag\TwigTag;
+use Setono\TagBagBundle\TagBag\TagBagInterface;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
 use Sylius\Component\Product\Model\ProductInterface;
 
@@ -27,6 +30,11 @@ final class ItemVisitedSubscriber extends TagSubscriber
             return;
         }
 
-        $this->tagBag->addScript(sprintf('StrandsTrack.push({ event:"visited", item: "%s" });', $product->getCode()), TagBagInterface::SECTION_BODY_BEGIN);
+        $this->tagBag->add(new TwigTag(
+            '@SetonoSyliusStrandsPlugin/Tag/item_visited.js.twig',
+            TagInterface::TYPE_SCRIPT,
+            Tags::TAG_ITEM_VISITED,
+            ['product' => $product]
+        ), TagBagInterface::SECTION_BODY_BEGIN);
     }
 }

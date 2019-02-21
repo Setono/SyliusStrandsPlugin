@@ -4,8 +4,12 @@ declare(strict_types=1);
 
 namespace Setono\SyliusStrandsPlugin\EventListener;
 
-use Setono\TagBagBundle\HttpFoundation\Session\Tag\TagBagInterface;
-use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
+use Setono\SyliusStrandsPlugin\Tag\Tags;
+use Setono\TagBagBundle\Tag\ScriptTag;
+use Setono\TagBagBundle\Tag\TagInterface;
+use Setono\TagBagBundle\Tag\TwigTag;
+use Setono\TagBagBundle\TagBag\TagBagInterface;
+use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 
 final class AddLibrarySubscriber extends TagSubscriber
@@ -25,13 +29,13 @@ final class AddLibrarySubscriber extends TagSubscriber
     public static function getSubscribedEvents(): array
     {
         return [
-            KernelEvents::RESPONSE => [
+            KernelEvents::REQUEST => [
                 'addLibrary',
             ],
         ];
     }
 
-    public function addLibrary(FilterResponseEvent $event): void
+    public function addLibrary(GetResponseEvent $event): void
     {
         if (!$event->isMasterRequest()) {
             return;
@@ -42,13 +46,12 @@ final class AddLibrarySubscriber extends TagSubscriber
             return;
         }
 
-        // we don't want to add the library code on redirects
-        $statusCode = $event->getResponse()->getStatusCode();
-        if (($statusCode < 200 || $statusCode > 299) && !in_array($statusCode, [404, 500], true)) {
-            return;
-        }
-
-        $this->tagBag->addScript('window.StrandsTrack = window.StrandsTrack || [];', TagBagInterface::SECTION_HEAD);
-        $this->tagBag->add(sprintf('<script src="https://bizsolutions.strands.com/sbsstatic/js/sbsLib-1.0.min.js"></script><script>try{SBS.Worker.go("%s");} catch (e){};</script>', $this->apiId), TagBagInterface::SECTION_BODY_END);
+        $this->tagBag->add(new ScriptTag('var StrandsTrack = window.StrandsTrack || [];', Tags::TAG_EVENT_HANDLER), TagBagInterface::SECTION_HEAD);
+        $this->tagBag->add(new TwigTag(
+            '@SetonoSyliusStrandsPlugin/Tag/library.html.twig',
+            TagInterface::TYPE_HTML,
+            Tags::TAG_LIBRARY,
+            ['api_id' => $this->apiId]
+        ), TagBagInterface::SECTION_BODY_END);
     }
 }

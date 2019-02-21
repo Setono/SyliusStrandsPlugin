@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace Setono\SyliusStrandsPlugin\EventListener;
 
 use Setono\SyliusStrandsPlugin\Resolver\ItemCodeResolverInterface;
-use Setono\TagBagBundle\HttpFoundation\Session\Tag\TagBagInterface;
+use Setono\SyliusStrandsPlugin\Tag\Tags;
+use Setono\TagBagBundle\Tag\ScriptTag;
+use Setono\TagBagBundle\TagBag\TagBagInterface;
 use Sylius\Component\Core\Model\OrderInterface;
 use Sylius\Component\Order\Context\CartContextInterface;
 
@@ -68,6 +70,6 @@ final class ShoppingCartUpdatedSubscriber extends TagSubscriber
             $codeString = '"' . implode('", "', $codes) . '"';
         }
 
-        $this->tagBag->addScript(sprintf('StrandsTrack.push({ event:"updateshoppingcart", items: [%s]})', $codeString), TagBagInterface::SECTION_BODY_BEGIN);
+        $this->tagBag->add(new ScriptTag(sprintf('StrandsTrack.push({ event:"updateshoppingcart", items: [%s]})', $codeString), Tags::TAG_SHOPPING_CART_UPDATED), TagBagInterface::SECTION_BODY_BEGIN);
     }
 }

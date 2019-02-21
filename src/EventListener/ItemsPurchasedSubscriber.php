@@ -4,26 +4,15 @@ declare(strict_types=1);
 
 namespace Setono\SyliusStrandsPlugin\EventListener;
 
-use Setono\TagBagBundle\Factory\TwigTagFactory;
-use Setono\TagBagBundle\HttpFoundation\Session\Tag\TagBagInterface;
+use Setono\SyliusStrandsPlugin\Tag\Tags;
+use Setono\TagBagBundle\Tag\TwigTag;
+use Setono\TagBagBundle\TagBag\TagBagInterface;
 use Setono\TagBagBundle\Tag\TagInterface;
 use Sylius\Component\Core\Model\OrderInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
 
 final class ItemsPurchasedSubscriber extends TagSubscriber
 {
-    /**
-     * @var TwigTagFactory
-     */
-    private $twigTagFactory;
-
-    public function __construct(TagBagInterface $tagBag, TwigTagFactory $twigTagFactory)
-    {
-        parent::__construct($tagBag);
-
-        $this->twigTagFactory = $twigTagFactory;
-    }
-
     public static function getSubscribedEvents(): array
     {
         return [
@@ -41,10 +30,11 @@ final class ItemsPurchasedSubscriber extends TagSubscriber
             return;
         }
 
-        $tag = $this->twigTagFactory->create('@SetonoSyliusStrandsPlugin/Tag/items_purchased.js.twig', TagInterface::TYPE_SCRIPT, [
-            'order' => $order,
-        ]);
-
-        $this->tagBag->addScript($tag, TagBagInterface::SECTION_BODY_BEGIN);
+        $this->tagBag->add(new TwigTag(
+            '@SetonoSyliusStrandsPlugin/Tag/items_purchased.js.twig',
+            TagInterface::TYPE_SCRIPT,
+            Tags::TAG_ITEMS_PURCHASED,
+            ['order' => $order]
+        ), TagBagInterface::SECTION_BODY_BEGIN);
     }
 }

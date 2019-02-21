@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Setono\SyliusStrandsPlugin\EventListener;
 
-use Setono\TagBagBundle\HttpFoundation\Session\Tag\TagBagInterface;
+use Setono\TagBagBundle\TagBag\TagBagInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 abstract class TagSubscriber implements EventSubscriberInterface
