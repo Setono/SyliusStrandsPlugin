@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Setono\SyliusStrandsPlugin\EventListener;
 
 use Setono\SyliusStrandsPlugin\Tag\Tags;
+use Setono\TagBagBundle\Tag\TagInterface;
 use Setono\TagBagBundle\Tag\TwigTag;
 use Setono\TagBagBundle\TagBag\TagBagInterface;
-use Setono\TagBagBundle\Tag\TagInterface;
 use Sylius\Component\Core\Model\OrderInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
 
