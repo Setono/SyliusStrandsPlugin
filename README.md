@@ -50,8 +50,8 @@ setono_sylius_strands:
 ```
 # .env
 
-# Get it at https://addwish.com/company/signin.html
-ADDWISH_PARTNER_ID=YOUR_PARTNER_ID
+# Get it at https://retail.strands.com/account/info/
+STRANDS_API_ID=YOUR_API_ID
 ```
 
 [ico-version]: https://img.shields.io/packagist/v/setono/sylius-strands-plugin.svg?style=flat-square
