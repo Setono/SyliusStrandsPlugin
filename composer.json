@@ -26,7 +26,7 @@
         "phpstan/phpstan-shim": "^0.10",
         "phpstan/phpstan-symfony": "^0.10",
         "phpstan/phpstan-webmozart-assert": "^0.10",
-        "phpunit/phpunit": "^6.5",
+        "phpunit/phpunit": "^8.5",
         "roave/security-advisories": "dev-master",
         "sensiolabs/security-checker": "^5.0",
         "setono/sylius-tag-bag-plugin": "^0.1.3",
