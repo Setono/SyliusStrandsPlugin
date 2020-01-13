@@ -23,7 +23,7 @@
         "lakion/mink-debug-extension": "^1.2.3",
         "phpspec/phpspec": "^6.1",
         "phpstan/phpstan-doctrine": "^0.10",
-        "phpstan/phpstan-shim": "^0.10",
+        "phpstan/phpstan-shim": "^0.12",
         "phpstan/phpstan-symfony": "^0.10",
         "phpstan/phpstan-webmozart-assert": "^0.10",
         "phpunit/phpunit": "^6.5",
