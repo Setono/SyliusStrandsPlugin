@@ -9,7 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
-        "setono/tag-bag-bundle": "^0.4",
+        "setono/tag-bag-bundle": "^0.5",
         "sylius/sylius": "^1.4"
     },
     "require-dev": {
