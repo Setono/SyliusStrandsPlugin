@@ -1,2 +1,2 @@
 setono_sylius_strands:
-    api_id: test_id
+    api_id: "%env(resolve:STRANDS_API_ID)%"
