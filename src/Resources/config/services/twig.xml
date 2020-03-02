@@ -10,5 +10,17 @@
             <argument type="service" id="setono_sylius_strands.resolver.item_code"/>
             <tag name="twig.extension"/>
         </service>
+
+        <service id="setono_sylius_strands.twig.widget" class="Setono\SyliusStrandsPlugin\Twig\WidgetExtension">
+            <argument type="service" id="setono_sylius_strands.resolver.item_code"/>
+            <argument type="service" id="sylius.context.cart"/>
+            <tag name="twig.extension"/>
+        </service>
+
+        <service id="setono_sylius_strands.twig.runtime" class="Setono\SyliusStrandsPlugin\Twig\Runtime">
+            <argument type="service" id="setono_sylius_strands.resolver.item_code"/>
+            <argument type="service" id="sylius.context.cart"/>
+            <tag name="twig.runtime"/>
+        </service>
     </services>
 </container>

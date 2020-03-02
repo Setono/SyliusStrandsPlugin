@@ -6,8 +6,8 @@ StrandsTrack.push({
     items: [
         {% for item in order.items %}
             {
-                id: "{{ item|setono_sylius_strands_item_code|raw }}",
-                price: "{{ item.discountedUnitPrice|setono_sylius_strands_format_money }}",
+                id: "{{ item|strands_item_code|raw }}",
+                price: "{{ item.discountedUnitPrice|strands_format_money }}",
                 quantity: "{{ item.quantity }}"
             }{% if not loop.last %},{% endif %}
         {% endfor %}

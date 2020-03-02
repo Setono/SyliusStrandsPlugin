@@ -55,6 +55,30 @@ setono_sylius_strands:
 STRANDS_API_ID=YOUR_API_ID
 ```
 
+## Usage
+
+### Create a generic widget
+
+In your twig template you can insert a widget like this:
+
+```twig
+{{ strands_widget('template') }}
+```
+
+The `template` is the id you get from here: [strands.com/tpl/website](https://retail.strands.com/tpl/website/).
+
+It will output this: `<div class="strandsRecs" tpl="template"></div>`
+
+### Create a widget for the cart
+
+Build a cart widget like this:
+
+```twig
+{{ strands_widget('template')|strands_add_cart_items }}
+```
+
+It will output this: `<div class="strandsRecs" tpl="template" item="list of items in the current cart"></div>`
+
 [ico-version]: https://poser.pugx.org/setono/sylius-strands-plugin/v/stable
 [ico-unstable-version]: https://poser.pugx.org/setono/sylius-strands-plugin/v/unstable
 [ico-license]: https://poser.pugx.org/setono/sylius-strands-plugin/license

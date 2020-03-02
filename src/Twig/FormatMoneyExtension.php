@@ -13,7 +13,7 @@ final class FormatMoneyExtension extends AbstractExtension
     public function getFilters(): array
     {
         return [
-            new TwigFilter('setono_sylius_strands_format_money', [$this, 'formatMoney']),
+            new TwigFilter('strands_format_money', [$this, 'formatMoney']),
         ];
     }
 
