@@ -2,25 +2,25 @@
 
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="setono.sylius_strands.event_listener.add_library" class="Setono\SyliusStrandsPlugin\EventListener\AddLibrarySubscriber">
+        <service id="setono_sylius_strands.event_listener.add_library" class="Setono\SyliusStrandsPlugin\EventListener\AddLibrarySubscriber">
             <argument type="service" id="setono_tag_bag.tag_bag"/>
-            <argument>%setono.sylius_strands.api_id%</argument>
+            <argument>%setono_sylius_strands.api_id%</argument>
             <tag name="kernel.event_subscriber"/>
         </service>
 
-        <service id="setono.sylius_strands.event_listener.item_visited" class="Setono\SyliusStrandsPlugin\EventListener\ItemVisitedSubscriber">
+        <service id="setono_sylius_strands.event_listener.item_visited" class="Setono\SyliusStrandsPlugin\EventListener\ItemVisitedSubscriber">
             <argument type="service" id="setono_tag_bag.tag_bag"/>
             <tag name="kernel.event_subscriber"/>
         </service>
 
-        <service id="setono.sylius_strands.event_listener.shopping_cart_updated" class="Setono\SyliusStrandsPlugin\EventListener\ShoppingCartUpdatedSubscriber">
+        <service id="setono_sylius_strands.event_listener.shopping_cart_updated" class="Setono\SyliusStrandsPlugin\EventListener\ShoppingCartUpdatedSubscriber">
             <argument type="service" id="setono_tag_bag.tag_bag"/>
             <argument type="service" id="sylius.context.cart.composite"/>
-            <argument type="service" id="setono.sylius_strands.resolver.item_code"/>
+            <argument type="service" id="setono_sylius_strands.resolver.item_code"/>
             <tag name="kernel.event_subscriber"/>
         </service>
 
-        <service id="setono.sylius_strands.event_listener.items_purchased" class="Setono\SyliusStrandsPlugin\EventListener\ItemsPurchasedSubscriber">
+        <service id="setono_sylius_strands.event_listener.items_purchased" class="Setono\SyliusStrandsPlugin\EventListener\ItemsPurchasedSubscriber">
             <argument type="service" id="setono_tag_bag.tag_bag"/>
             <tag name="kernel.event_subscriber"/>
         </service>
