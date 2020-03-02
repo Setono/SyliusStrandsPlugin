@@ -9,9 +9,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 abstract class TagSubscriber implements EventSubscriberInterface
 {
-    /**
-     * @var TagBagInterface
-     */
+    /** @var TagBagInterface */
     protected $tagBag;
 
     public function __construct(TagBagInterface $tagBag)

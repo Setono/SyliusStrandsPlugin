@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Setono\SyliusStrandsPlugin\EventListener;
 
+use function count;
+use function Safe\sprintf;
 use Setono\SyliusStrandsPlugin\Resolver\ItemCodeResolverInterface;
 use Setono\SyliusStrandsPlugin\Tag\Tags;
 use Setono\TagBagBundle\Tag\ScriptTag;
@@ -13,14 +15,10 @@ use Sylius\Component\Order\Context\CartContextInterface;
 
 final class ShoppingCartUpdatedSubscriber extends TagSubscriber
 {
-    /**
-     * @var CartContextInterface
-     */
+    /** @var CartContextInterface */
     private $cartContext;
 
-    /**
-     * @var ItemCodeResolverInterface
-     */
+    /** @var ItemCodeResolverInterface */
     private $itemCodeResolver;
 
     public function __construct(TagBagInterface $tagBag, CartContextInterface $cartContext, ItemCodeResolverInterface $itemCodeResolver)
@@ -66,7 +64,7 @@ final class ShoppingCartUpdatedSubscriber extends TagSubscriber
         }
 
         $codeString = '';
-        if (\count($codes)) {
+        if (count($codes) > 0) {
             $codeString = '"' . implode('", "', $codes) . '"';
         }
 

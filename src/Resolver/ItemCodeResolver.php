@@ -8,6 +8,7 @@ use Sylius\Component\Core\Model\OrderItemInterface;
 
 final class ItemCodeResolver implements ItemCodeResolverInterface
 {
+    /** @var bool */
     private $variantBased;
 
     public function __construct(bool $variantBased)

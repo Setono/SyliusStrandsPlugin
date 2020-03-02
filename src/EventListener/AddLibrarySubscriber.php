@@ -14,9 +14,7 @@ use Symfony\Component\HttpKernel\KernelEvents;
 
 final class AddLibrarySubscriber extends TagSubscriber
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     private $apiId;
 
     public function __construct(TagBagInterface $tagBag, string $apiId)

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Setono\SyliusStrandsPlugin\Twig;
 
+use function Safe\sprintf;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 

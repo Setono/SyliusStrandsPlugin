@@ -11,9 +11,7 @@ use Twig\TwigFilter;
 
 final class ItemCodeExtension extends AbstractExtension
 {
-    /**
-     * @var ItemCodeResolverInterface
-     */
+    /** @var ItemCodeResolverInterface */
     private $itemCodeResolver;
 
     public function __construct(ItemCodeResolverInterface $itemCodeResolver)

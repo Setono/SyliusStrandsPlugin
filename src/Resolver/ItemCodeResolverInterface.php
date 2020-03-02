@@ -10,10 +10,6 @@ interface ItemCodeResolverInterface
 {
     /**
      * Will resolve the items code based on the plugin configuration
-     *
-     * @param OrderItemInterface $item
-     *
-     * @return string
      */
     public function resolve(OrderItemInterface $item): string;
 }
