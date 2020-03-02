@@ -1,8 +1,9 @@
 # Sylius Strands Plugin
 
-[![Latest Version on Packagist][ico-version]][link-packagist]
+[![Latest Version][ico-version]][link-packagist]
+[![Latest Unstable Version][ico-unstable-version]][link-packagist]
 [![Software License][ico-license]](LICENSE)
-[![Build Status][ico-travis]][link-travis]
+[![Build Status][ico-github-actions]][link-github-actions]
 [![Quality Score][ico-code-quality]][link-code-quality]
 
 Integrates the [Strands recommendation engine](https://retail.strands.com/products/product-recommendations/) into Sylius. 
@@ -54,11 +55,12 @@ setono_sylius_strands:
 STRANDS_API_ID=YOUR_API_ID
 ```
 
-[ico-version]: https://img.shields.io/packagist/v/setono/sylius-strands-plugin.svg?style=flat-square
-[ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-travis]: https://travis-ci.com/Setono/SyliusStrandsPlugin.svg?branch=master
-[ico-code-quality]: https://img.shields.io/scrutinizer/g/Setono/SyliusStrandsPlugin.svg?style=flat-square
+[ico-version]: https://poser.pugx.org/setono/sylius-strands-plugin/v/stable
+[ico-unstable-version]: https://poser.pugx.org/setono/sylius-strands-plugin/v/unstable
+[ico-license]: https://poser.pugx.org/setono/sylius-strands-plugin/license
+[ico-github-actions]: https://github.com/Setono/SyliusStrandsPlugin/workflows/build/badge.svg
+[ico-code-quality]: https://img.shields.io/scrutinizer/g/Setono/SyliusStrandsPlugin.svg
 
 [link-packagist]: https://packagist.org/packages/setono/sylius-strands-plugin
-[link-travis]: https://travis-ci.com/Setono/SyliusStrandsPlugin
+[link-github-actions]: https://github.com/Setono/SyliusStrandsPlugin/actions
 [link-code-quality]: https://scrutinizer-ci.com/g/Setono/SyliusStrandsPlugin
