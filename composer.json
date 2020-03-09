@@ -50,12 +50,12 @@
         }
     },
     "autoload-dev": {
-        "classmap": [
-            "tests/Application/Kernel.php"
-        ],
         "psr-4": {
             "Tests\\Setono\\SyliusStrandsPlugin\\": "tests/"
-        }
+        },
+        "classmap": [
+            "tests/Application/Kernel.php"
+        ]
     },
     "prefer-stable": true,
     "scripts": {
