@@ -13,6 +13,7 @@ final class WidgetExtension extends AbstractExtension
     public function getFilters(): array
     {
         return [
+            new TwigFilter('strands_add_item', [Runtime::class, 'addItem'], ['is_safe' => ['html']]),
             new TwigFilter('strands_add_items', [Runtime::class, 'addItems'], ['is_safe' => ['html']]),
             new TwigFilter('strands_add_cart_items', [Runtime::class, 'addCartItems'], ['is_safe' => ['html']]),
         ];

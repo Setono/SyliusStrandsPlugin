@@ -71,13 +71,19 @@ It will output this: `<div class="strandsRecs" tpl="template"></div>`
 
 ### Create a widget for the cart
 
-Build a cart widget like this:
-
 ```twig
 {{ strands_widget('template')|strands_add_cart_items }}
 ```
 
 It will output this: `<div class="strandsRecs" tpl="template" item="list of items in the current cart"></div>`
+
+### Create a widget for the product page
+
+```twig
+{{ strands_widget('template')|strands_add_item(product.code) }}
+```
+
+It will output this: `<div class="strandsRecs" tpl="template" item="product code"></div>`
 
 [ico-version]: https://poser.pugx.org/setono/sylius-strands-plugin/v/stable
 [ico-unstable-version]: https://poser.pugx.org/setono/sylius-strands-plugin/v/unstable

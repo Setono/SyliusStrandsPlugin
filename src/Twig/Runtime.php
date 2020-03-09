@@ -34,14 +34,24 @@ final class Runtime implements RuntimeExtensionInterface
         return new Widget($template);
     }
 
+    /**
+     * @param OrderItemInterface|string $item
+     */
+    public function addItem(Widget $widget, $item): Widget
+    {
+        if ($item instanceof OrderItemInterface) {
+            $widget->addItem($this->itemCodeResolver->resolve($item));
+        } else {
+            $widget->addItem($item);
+        }
+
+        return $widget;
+    }
+
     public function addItems(Widget $widget, iterable $items): Widget
     {
         foreach ($items as $item) {
-            if ($item instanceof OrderItemInterface) {
-                $widget->addItem($this->itemCodeResolver->resolve($item));
-            } else {
-                $widget->addItem($item);
-            }
+            $this->addItem($widget, $item);
         }
 
         return $widget;
