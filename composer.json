@@ -14,10 +14,10 @@
         "sylius/sylius": "^1.4"
     },
     "require-dev": {
-        "matthiasnoback/symfony-config-test": "^4.1",
+        "matthiasnoback/symfony-config-test": "^4.2",
         "matthiasnoback/symfony-dependency-injection-test": "^4.1",
         "phpspec/phpspec": "^6.2",
-        "phpunit/phpunit": "^8.5",
+        "phpunit/phpunit": "^9.2",
         "roave/security-advisories": "dev-master",
         "setono/code-quality-pack": "^1.2",
         "setono/sylius-tag-bag-plugin": "^1.1",

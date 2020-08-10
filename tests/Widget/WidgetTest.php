@@ -15,7 +15,7 @@ final class WidgetTest extends TestCase
     {
         $widget = Widget::create('tpl-1');
 
-        $this->assertSame('<div class="strandsRecs" tpl="tpl-1"></div>', $widget->getHtml());
+        self::assertSame('<div class="strandsRecs" tpl="tpl-1"></div>', $widget->getHtml());
     }
 
     /**
@@ -27,7 +27,7 @@ final class WidgetTest extends TestCase
             ->addItem('item-1')
         ;
 
-        $this->assertSame('<div class="strandsRecs" tpl="tpl-1" item="item-1"></div>', $widget->getHtml());
+        self::assertSame('<div class="strandsRecs" tpl="tpl-1" item="item-1"></div>', $widget->getHtml());
     }
 
     /**
@@ -40,7 +40,7 @@ final class WidgetTest extends TestCase
             ->addItem('item-2')
         ;
 
-        $this->assertSame('<div class="strandsRecs" tpl="tpl-1" item="item-1_._item-2"></div>', $widget->getHtml());
+        self::assertSame('<div class="strandsRecs" tpl="tpl-1" item="item-1_._item-2"></div>', $widget->getHtml());
     }
 
     /**
@@ -52,7 +52,7 @@ final class WidgetTest extends TestCase
             ->addFilter('category', 'shoes')
         ;
 
-        $this->assertSame('<div class="strandsRecs" tpl="tpl-1" dfilter="category::shoes"></div>', $widget->getHtml());
+        self::assertSame('<div class="strandsRecs" tpl="tpl-1" dfilter="category::shoes"></div>', $widget->getHtml());
     }
 
     /**
@@ -65,7 +65,7 @@ final class WidgetTest extends TestCase
             ->addFilter('gender', 'men')
         ;
 
-        $this->assertSame('<div class="strandsRecs" tpl="tpl-1" dfilter="category::shoes_._gender::men"></div>', $widget->getHtml());
+        self::assertSame('<div class="strandsRecs" tpl="tpl-1" dfilter="category::shoes_._gender::men"></div>', $widget->getHtml());
     }
 
     /**
@@ -79,6 +79,6 @@ final class WidgetTest extends TestCase
             ->addFilter('gender', 'men')
         ;
 
-        $this->assertSame('<div class="strandsRecs" tpl="tpl-1" dfilter="category::shoes;;jeans_._gender::men"></div>', $widget->getHtml());
+        self::assertSame('<div class="strandsRecs" tpl="tpl-1" dfilter="category::shoes;;jeans_._gender::men"></div>', $widget->getHtml());
     }
 }
