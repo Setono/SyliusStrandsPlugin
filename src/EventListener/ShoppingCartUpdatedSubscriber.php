@@ -71,7 +71,7 @@ final class ShoppingCartUpdatedSubscriber extends TagSubscriber
 
         $this->tagBag->addTag(
             (new ScriptTag(sprintf('StrandsTrack.push({ event:"updateshoppingcart", items: [%s]})', $codeString)))
-                ->setSection(TagInterface::SECTION_BODY_BEGIN)
+                ->setSection(TagInterface::SECTION_BODY_END)
                 ->setName(Tags::TAG_SHOPPING_CART_UPDATED)
         );
     }

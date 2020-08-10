@@ -31,7 +31,7 @@ final class ItemsPurchasedSubscriber extends TagSubscriber
 
         $this->tagBag->addTag(
             (new TwigTag('@SetonoSyliusStrandsPlugin/Tag/items_purchased.js.twig', ['order' => $order]))
-                ->setSection(TagInterface::SECTION_BODY_BEGIN)
+                ->setSection(TagInterface::SECTION_BODY_END)
                 ->setName(Tags::TAG_ITEMS_PURCHASED)
         );
     }

@@ -46,12 +46,14 @@ final class AddLibrarySubscriber extends TagSubscriber
 
         $this->tagBag->addTag(
             (new ScriptTag('var StrandsTrack = window.StrandsTrack || [];'))
-                ->setSection(TagInterface::SECTION_HEAD)
+                ->setSection(TagInterface::SECTION_BODY_END)
+                ->setPriority(100)
         );
         $this->tagBag->addTag(
             (new TwigTag('@SetonoSyliusStrandsPlugin/Tag/library.html.twig', ['api_id' => $this->apiId]))
-                ->setSection(TagInterface::SECTION_BODY_BEGIN)
+                ->setSection(TagInterface::SECTION_BODY_END)
                 ->setName(Tags::TAG_LIBRARY)
+                ->setPriority(-100)
         );
     }
 }

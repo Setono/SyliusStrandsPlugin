@@ -31,7 +31,7 @@ final class ItemVisitedSubscriber extends TagSubscriber
 
         $this->tagBag->addTag(
             (new TwigTag('@SetonoSyliusStrandsPlugin/Tag/item_visited.js.twig', ['product' => $product]))
-                ->setSection(TagInterface::SECTION_BODY_BEGIN)
+                ->setSection(TagInterface::SECTION_BODY_END)
                 ->setName(Tags::TAG_ITEM_VISITED)
         );
     }
