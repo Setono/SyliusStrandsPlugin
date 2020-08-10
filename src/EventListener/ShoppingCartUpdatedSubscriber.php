@@ -8,8 +8,9 @@ use function count;
 use function Safe\sprintf;
 use Setono\SyliusStrandsPlugin\Resolver\ItemCodeResolverInterface;
 use Setono\SyliusStrandsPlugin\Tag\Tags;
-use Setono\TagBagBundle\Tag\ScriptTag;
-use Setono\TagBagBundle\TagBag\TagBagInterface;
+use Setono\TagBag\Tag\ScriptTag;
+use Setono\TagBag\Tag\TagInterface;
+use Setono\TagBag\TagBagInterface;
 use Sylius\Component\Core\Model\OrderInterface;
 use Sylius\Component\Order\Context\CartContextInterface;
 
@@ -68,6 +69,10 @@ final class ShoppingCartUpdatedSubscriber extends TagSubscriber
             $codeString = '"' . implode('", "', $codes) . '"';
         }
 
-        $this->tagBag->add(new ScriptTag(sprintf('StrandsTrack.push({ event:"updateshoppingcart", items: [%s]})', $codeString), Tags::TAG_SHOPPING_CART_UPDATED), TagBagInterface::SECTION_BODY_BEGIN);
+        $this->tagBag->addTag(
+            (new ScriptTag(sprintf('StrandsTrack.push({ event:"updateshoppingcart", items: [%s]})', $codeString)))
+                ->setSection(TagInterface::SECTION_BODY_BEGIN)
+                ->setName(Tags::TAG_SHOPPING_CART_UPDATED)
+        );
     }
 }

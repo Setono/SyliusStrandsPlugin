@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Setono\SyliusStrandsPlugin\EventListener;
 
 use Setono\SyliusStrandsPlugin\Tag\Tags;
-use Setono\TagBagBundle\Tag\ScriptTag;
-use Setono\TagBagBundle\Tag\TagInterface;
-use Setono\TagBagBundle\Tag\TwigTag;
-use Setono\TagBagBundle\TagBag\TagBagInterface;
+use Setono\TagBag\Tag\ScriptTag;
+use Setono\TagBag\Tag\TagInterface;
+use Setono\TagBag\Tag\TwigTag;
+use Setono\TagBag\TagBagInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 
@@ -44,12 +44,14 @@ final class AddLibrarySubscriber extends TagSubscriber
             return;
         }
 
-        $this->tagBag->add(new ScriptTag('var StrandsTrack = window.StrandsTrack || [];', Tags::TAG_EVENT_HANDLER), TagBagInterface::SECTION_HEAD);
-        $this->tagBag->add(new TwigTag(
-            '@SetonoSyliusStrandsPlugin/Tag/library.html.twig',
-            TagInterface::TYPE_HTML,
-            Tags::TAG_LIBRARY,
-            ['api_id' => $this->apiId]
-        ), TagBagInterface::SECTION_BODY_END);
+        $this->tagBag->addTag(
+            (new ScriptTag('var StrandsTrack = window.StrandsTrack || [];'))
+                ->setSection(TagInterface::SECTION_HEAD)
+        );
+        $this->tagBag->addTag(
+            (new TwigTag('@SetonoSyliusStrandsPlugin/Tag/library.html.twig', ['api_id' => $this->apiId]))
+                ->setSection(TagInterface::SECTION_BODY_BEGIN)
+                ->setName(Tags::TAG_LIBRARY)
+        );
     }
 }
